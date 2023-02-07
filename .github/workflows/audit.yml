@@ -25,11 +25,22 @@ jobs:
         with:
           must_deny: "node_modules"
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: "pnpm"
+
       - name: Install modules
-        run: npm ci
+        run: pnpm i --frozen-lockfile
 
       - name: ESLint validation
-        run: npx eslint --max-warnings 0
+        run: pnpm exec eslint --max-warnings 0
 
       - name: Check commit message length
         uses: gsactions/commit-message-checker@v1
