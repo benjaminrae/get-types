@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts "
+    "build": "tsup src/index.ts --format cjs,esm --dts ",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,8 @@
     "eslint-config-xo-typescript": "^0.55.1",
     "typescript": ">=4.4",
     "eslint-config-prettier": "^8.6.0",
-    "tsup": "^6.5.0"
+    "tsup": "^6.5.0",
+    "husky": "^8.0.0"
   },
   "dependencies": {}
 }
