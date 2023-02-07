@@ -1,0 +1,29 @@
+name: Testing
+
+on: push
+
+jobs:
+  test:
+    name: Tests passes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: "pnpm"
+
+      - name: Install modules
+        run: pnpm i --frozen-lockfile
+
+      - name: Testing
+        run: pnpm test
