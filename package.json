@@ -7,15 +7,16 @@
     "build": "tsup src/index.ts --format cjs,esm --dts ",
     "build:dev": "tsc -w",
     "prepare": "husky install",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "test:dev": "jest --watchAll",
-    "test:coverage": "jest --coverage --passWithNoTests"
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^29.4.0",
+    "@types/node": "^18.13.0",
     "@typescript-eslint/eslint-plugin": ">=5.43.0",
     "@typescript-eslint/parser": ">=5.43.0",
     "eslint": ">=8.0.0",
