@@ -1,6 +1,6 @@
 import Service from "./Service";
 
-const mockGet = jest.fn().mockImplementation(async () => ({ data: undefined }));
+const mockGet = jest.fn().mockImplementation(async () => ({ data: null }));
 
 jest.mock("axios", () => ({
   get: async (path: string): Promise<unknown> =>
