@@ -23,9 +23,13 @@ class RegistryService extends Service implements RegistryServiceStructure {
     const dependencyList = this.getDependencyList(packagePath);
 
     dependencyList.forEach((dependency) => {
-      const installedDependency = this.getInstalledDependency(dependency);
+      let installedDependency = this.getInstalledDependency(dependency);
 
       if (this.checkIsTypesPackage(dependency)) {
+        const nonTypeDepency = dependency.replace(this.typesRegExp, "");
+
+        installedDependency = this.getInstalledDependency(nonTypeDepency);
+
         if (installedDependency) {
           installedDependency.hasTypes = true;
           installedDependency.hasTypesInstalled = true;
@@ -33,7 +37,7 @@ class RegistryService extends Service implements RegistryServiceStructure {
         }
 
         this.installedDependencies.push(
-          this.createNewTypesDependency(dependency)
+          this.createNewTypesDependency(nonTypeDepency)
         );
 
         return;
